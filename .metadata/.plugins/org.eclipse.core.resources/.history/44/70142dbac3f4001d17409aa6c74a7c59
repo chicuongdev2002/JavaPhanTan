@@ -1,0 +1,30 @@
+package enity;
+
+import java.awt.SecondaryLoop;
+import java.io.Serializable;
+
+import org.hibernate.annotations.CollectionId;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Patient")
+public class Patient implements Serializable {
+	@Column(columnDefinition = "nvarchar(255)")
+	private String address;
+	private int age;
+	@Column(columnDefinition = "nvarchar(255)")
+	private String firstName;
+	@Column(columnDefinition = "nvarchar(255)")
+	private String gender;
+	@Id
+	@Column(columnDefinition = "nvarchar(13)")
+	private String id;
+	@Column(columnDefinition = "nvarchar(255)")
+	private String lastName;
+	@Column(columnDefinition = "nvarchar(255)")
+	private String phone;
+}

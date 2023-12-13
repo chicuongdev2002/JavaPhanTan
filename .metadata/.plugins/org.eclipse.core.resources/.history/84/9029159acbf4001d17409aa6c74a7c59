@@ -1,0 +1,17 @@
+package implePatientPakage;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+import enity.Patient;
+import patientInterfacePakage.PatientInterface;
+
+public class ImplementPatient extends UnicastRemoteObject implements PatientInterface{
+
+	@Override
+	public boolean addPatient(Patient patient) throws RemoteException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

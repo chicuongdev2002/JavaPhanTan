@@ -1,0 +1,41 @@
+package dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import db.Connect;
+import enity.Patient;
+
+public class PatientDao {
+	private SessionFactory sessionFactory;
+	private Session session;
+
+	public PatientDao() {
+		sessionFactory = Connect.getInstance().getSessionFactory();
+	}
+
+	// a. (1.5 điểm) Thêm mới một bệnh nhân. Mã bệnh nhân theo mẫu “PT-X”, X là số
+	// nguyên > 0.
+	// + addPatient (patient: Patient) : boolean
+	public boolean addPatient(Patient patient) {
+		session = sessionFactory.getCurrentSession();
+		Transaction tr = session.getTransaction();
+		try {
+			tr.begin();
+//			String idRegex = "^PT-\\d+$|^PT-\\d$";
+//			String patientId = patient.getId();
+//			if (!patientId.matches(idRegex)) {
+//				throw new Exception("Sai định dạng đúng là PT-X hoặc PT-X với X là một chữ số");
+//			}else
+			session.persist(patient);
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+		}
+		return false;
+	}
+
+}
